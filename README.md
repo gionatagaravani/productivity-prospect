@@ -38,7 +38,7 @@ yarn dev
 - Modern UI/UX
 
 ## Deployment
-Recommended deployment platform: Vercel
+Recommended deployment platform: Hostinger
 
 ## Contributing
 Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
