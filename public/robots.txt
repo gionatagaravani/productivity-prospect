@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://productivityprospect.com
+
+# Sitemaps
+Sitemap: https://productivityprospect.com/sitemap.xml
