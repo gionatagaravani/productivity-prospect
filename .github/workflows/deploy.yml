@@ -24,16 +24,13 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-      
-      - name: Export static files
-        run: npm run export
-      
+
       - name: 📂 Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.hostinger.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
+          local-dir: ./.next/
           server-dir: ./public_html/
           dangerous-clean-slate: true
