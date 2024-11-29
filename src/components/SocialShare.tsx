@@ -31,7 +31,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
   ]
 
   const handleShare = async () => {
-    if (navigator.share) {
+    if (navigator.share && typeof navigator.share === 'function') {
       try {
         await navigator.share({
           title,
@@ -58,7 +58,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
           {link.icon}
         </a>
       ))}
-      {navigator.share && (
+      {navigator.share && typeof navigator.share === 'function' && (
         <button
           onClick={handleShare}
           className="text-gray-400 hover:text-productivity-primary transition-colors"

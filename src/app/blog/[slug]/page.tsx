@@ -22,7 +22,7 @@ function getRelatedPosts(currentSlug: string) {
       title: post.title,
       slug: post._raw.flattenedPath,
       excerpt: post.description || '',
-      coverImage: post.coverImage,
+      coverImage: post.image,
     }))
 }
 
@@ -85,10 +85,10 @@ export default function Post({ params }: PostProps) {
         <article className="lg:col-span-8 space-y-8">
           {/* Post Header */}
           <header className="space-y-6">
-            {post.coverImage && (
+            {post.image && (
               <div className="relative aspect-video rounded-2xl overflow-hidden">
                 <Image
-                  src={post.coverImage}
+                  src={post.image}
                   alt={post.title}
                   fill
                   className="object-cover"
