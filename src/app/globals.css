@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-gray-50;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-productivity-primary rounded-full;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
