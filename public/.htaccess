@@ -11,12 +11,6 @@ RewriteCond %{REQUEST_URI} !\.(?:js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ [N
 RewriteCond %{REQUEST_URI} ^/(blog|about)(/|$) [NC]
 RewriteRule ^([^/]+)(/[^/]+)?/?$ /$1$2.html [L]
 
-# Handle other routes
-RewriteCond %{REQUEST_URI} !\.html$
-RewriteCond %{REQUEST_URI} !\.(?:js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ [NC]
-RewriteRule ^([^/]+)/([^/]+)/?$ /$1/$2.html [L]
-RewriteRule ^([^/]+)/?$ /$1.html [L]
-
 # Handle 404 errors
 ErrorDocument 404 /404.html
 
