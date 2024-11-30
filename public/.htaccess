@@ -5,12 +5,13 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Handle specific routes for blog and about
-RewriteCond %{REQUEST_URI} ^/blog/?$ [OR]
-RewriteCond %{REQUEST_URI} ^/about/?$
-RewriteRule ^(.*)$ /$1.html [L]
+# Handle all routes by redirecting to the HTML file
+RewriteCond %{REQUEST_URI} !\.html$
+RewriteCond %{REQUEST_URI} !\.(?:js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ [NC]
+RewriteCond %{REQUEST_URI} ^/(blog|about)(/|$) [NC]
+RewriteRule ^([^/]+)(/[^/]+)?/?$ /$1$2.html [L]
 
-# Handle all other routes by redirecting to the HTML file
+# Handle other routes
 RewriteCond %{REQUEST_URI} !\.html$
 RewriteCond %{REQUEST_URI} !\.(?:js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ [NC]
 RewriteRule ^([^/]+)/([^/]+)/?$ /$1/$2.html [L]
