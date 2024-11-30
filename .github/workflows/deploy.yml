@@ -27,35 +27,35 @@ jobs:
 
       - name: Create .htaccess
         run: |
-          echo "RewriteEngine On" > ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# If the requested resource exists as a file or directory, serve it directly" >> ./.next/server/app/.htaccess
-          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> ./.next/server/app/.htaccess
-          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# If the request doesn't end in .html, add .html internally" >> ./.next/server/app/.htaccess
-          echo "RewriteCond %{REQUEST_URI} !\.html$" >> ./.next/server/app/.htaccess
-          echo "RewriteRule ^([^.]+)$ $1.html [L]" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# Handle 404 errors" >> ./.next/server/app/.htaccess
-          echo "ErrorDocument 404 /404.html" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# Enable CORS" >> ./.next/server/app/.htaccess
-          echo "Header set Access-Control-Allow-Origin \"*\"" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# Security headers" >> ./.next/server/app/.htaccess
-          echo "Header set X-Content-Type-Options \"nosniff\"" >> ./.next/server/app/.htaccess
-          echo "Header set X-Frame-Options \"SAMEORIGIN\"" >> ./.next/server/app/.htaccess
-          echo "Header set X-XSS-Protection \"1; mode=block\"" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "# Cache control" >> ./.next/server/app/.htaccess
-          echo "<FilesMatch \"\.(html|htm)$\">" >> ./.next/server/app/.htaccess
-          echo "    Header set Cache-Control \"max-age=0, private, no-cache, no-store, must-revalidate\"" >> ./.next/server/app/.htaccess
-          echo "</FilesMatch>" >> ./.next/server/app/.htaccess
-          echo "" >> ./.next/server/app/.htaccess
-          echo "<FilesMatch \"\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$\">" >> ./.next/server/app/.htaccess
-          echo "    Header set Cache-Control \"max-age=31536000, public\"" >> ./.next/server/app/.htaccess
-          echo "</FilesMatch>" >> ./.next/server/app/.htaccess
+          echo "RewriteEngine On" > ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# If the requested resource exists as a file or directory, serve it directly" >> ./out/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> ./out/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# If the request doesn't end in .html, add .html internally" >> ./out/.htaccess
+          echo "RewriteCond %{REQUEST_URI} !\.html$" >> ./out/.htaccess
+          echo "RewriteRule ^([^.]+)$ $1.html [L]" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# Handle 404 errors" >> ./out/.htaccess
+          echo "ErrorDocument 404 /404.html" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# Enable CORS" >> ./out/.htaccess
+          echo "Header set Access-Control-Allow-Origin \"*\"" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# Security headers" >> ./out/.htaccess
+          echo "Header set X-Content-Type-Options \"nosniff\"" >> ./out/.htaccess
+          echo "Header set X-Frame-Options \"SAMEORIGIN\"" >> ./out/.htaccess
+          echo "Header set X-XSS-Protection \"1; mode=block\"" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "# Cache control" >> ./out/.htaccess
+          echo "<FilesMatch \"\.(html|htm)$\">" >> ./out/.htaccess
+          echo "    Header set Cache-Control \"max-age=0, private, no-cache, no-store, must-revalidate\"" >> ./out/.htaccess
+          echo "</FilesMatch>" >> ./out/.htaccess
+          echo "" >> ./out/.htaccess
+          echo "<FilesMatch \"\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2)$\">" >> ./out/.htaccess
+          echo "    Header set Cache-Control \"max-age=31536000, public\"" >> ./out/.htaccess
+          echo "</FilesMatch>" >> ./out/.htaccess
 
       - name: 📂 Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -64,6 +64,6 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./.next/server/app/
+          local-dir: ./out/
           dangerous-clean-slate: true
           log-level: verbose
