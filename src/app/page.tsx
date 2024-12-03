@@ -1,3 +1,5 @@
+import { allPosts } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
 import Link from 'next/link'
 import Image from 'next/image'
 import Newsletter from '@/components/Newsletter'
@@ -79,39 +81,36 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {[
-            {
-              title: 'Time Management',
-              description: 'Learn proven techniques to manage your time effectively.',
-              link: '/blog/time-management'
-            },
-            {
-              title: 'Goal Setting',
-              description: 'Create actionable and achievable goals.',
-              link: '/blog/goal-setting'
-            },
-            {
-              title: 'Productivity Hacks',
-              description: 'Discover tools and strategies to work smarter.',
-              link: '/blog/productivity-hacks'
-            }
-          ].map((article, index) => (
-            <div key={index} className="bg-white shadow-sm hover:shadow-md transition-shadow rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {article.title}
-              </h3>
-              <p className="text-gray-600 mb-4">{article.description}</p>
-              <Link 
-                href={article.link}
-                className="text-orange-500 hover:text-orange-600 font-medium inline-flex items-center"
-              >
-                Read More
-                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          ))}
+          {allPosts
+            .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+            .slice(0, 3)
+            .map((article) => (
+              <div key={article._id} className="bg-white shadow-sm hover:shadow-md transition-shadow rounded-xl p-6">
+                {article.image && (
+                  <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {article.title}
+                </h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">{article.description}</p>
+                <Link 
+                  href={`/blog/${article._raw.flattenedPath}`}
+                  className="text-orange-500 hover:text-orange-600 font-medium inline-flex items-center"
+                >
+                  Read More
+                  <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            ))}
         </div>
 
         <div className="text-center">
