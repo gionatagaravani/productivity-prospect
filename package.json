@@ -7,7 +7,7 @@
     "build": "contentlayer build && next build && next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && git add public/sitemap.xml && git commit -m 'deploy' && git push origin main"
+    "deploy": "npm run build && git add public/sitemap.xml && git add . && git commit -m 'deploy' && git push origin main"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
