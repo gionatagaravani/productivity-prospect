@@ -4,6 +4,9 @@ const siteUrl = process.env.SITE_URL || 'https://productivityprospect.com'
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: '31HJMvtPjYHguU7FBmRhXjGvm6atlTIuC-ImaIZeSzI',
+  },
   title: {
     default: 'Productivity Prospect',
     template: '%s | Productivity Prospect',
