@@ -15,12 +15,31 @@ export default function Newsletter({ variant = 'default' }: NewsletterProps) {
     e.preventDefault()
     setStatus('loading')
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_MAILERLITE_API_TOKEN}`
+        },
+        body: JSON.stringify({
+          email: email,
+          groups: [], // Optional: Add group IDs if needed
+          status: 'active'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
+
       setStatus('success')
       setMessage('Thanks for subscribing! Check your email for confirmation.')
       setEmail('')
-    }, 1000)
+    } catch (error) {
+      setStatus('error')
+      setMessage('Something went wrong. Please try again.')
+    }
   }
 
   const isSidebar = variant === 'sidebar'
