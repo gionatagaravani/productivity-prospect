@@ -28,6 +28,11 @@ export const defaultMetadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

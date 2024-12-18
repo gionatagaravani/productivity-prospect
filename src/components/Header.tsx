@@ -10,20 +10,18 @@ const navigation = [
 export default function Header() {
   return (
     <header className="bg-white border-b border-gray-100">
-      <nav className="container mx-auto px-4 py-4 max-w-6xl">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 relative">
+      <nav className="container mx-auto px-4 max-w-6xl h-20">
+        <div className="flex justify-between items-center h-full">
+          <Link href="/" className="flex items-center h-full py-2">
+            <div className="relative h-full aspect-[4/1]">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Productivity Prospect Logo"
                 fill
                 className="object-contain"
+                priority
               />
             </div>
-            <span className="text-lg font-bold text-orange-500">
-              Productivity Prospect
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
