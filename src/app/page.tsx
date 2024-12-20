@@ -45,26 +45,33 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              title: 'Expert Insights',
-              description: 'Learn from productivity experts and successful professionals who share their best practices and experiences.',
-              icon: '🎯'
+              title: 'Goal Setting Methods',
+              description: 'Discover effective techniques for setting and achieving meaningful goals that align with your vision and values.',
+              icon: '🎯',
+              tag: 'goal-setting-methods'
             },
             {
-              title: 'Practical Strategies',
-              description: 'Get actionable tips and techniques that you can implement immediately to improve your workflow.',
-              icon: '⚡'
+              title: 'Mindset and Motivation',
+              description: 'Learn powerful strategies to develop a growth mindset and maintain consistent motivation in pursuing your objectives.',
+              icon: '🧠',
+              tag: 'mindset-and-motivation'
             },
             {
-              title: 'Regular Updates',
-              description: 'Stay up-to-date with the latest productivity tools, methods, and research through our weekly articles.',
-              icon: '📈'
+              title: 'Work-Life Balance',
+              description: 'Master the art of balancing professional success with personal well-being for a more fulfilling and sustainable lifestyle.',
+              icon: '⚖️',
+              tag: 'work-life-balance'
             }
           ].map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <Link 
+              key={index} 
+              href={`/blog?tag=${feature.tag}`}
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            >
               <div className="text-4xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
