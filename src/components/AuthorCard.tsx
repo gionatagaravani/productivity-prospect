@@ -19,7 +19,7 @@ export default function AuthorCard() {
           Gionata Garavani
         </h3>
         <p className="text-gray-600 text-sm mb-4">
-          23-year-old Italian Software Developer passionate about productivity, technology, and personal growth.
+          24-year-old Italian Software Developer passionate about productivity, technology, and personal growth.
         </p>
         <Link
           href="/about"
