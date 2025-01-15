@@ -39,7 +39,7 @@ export default function Header() {
               href="#newsletter"
               className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200"
             >
-              Subscribe
+              Get free planner
             </Link>
           </div>
 
